@@ -1,7 +1,8 @@
-from os import name
+﻿from os import name
 import sys
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtGui import QIcon
 
 class RegistrationWindow(QMainWindow):
     def __init__(self):
@@ -34,10 +35,21 @@ class RegistrationWindow(QMainWindow):
             if widget is not None: widget.show()
             
     def open_main_window(self):
-        # 
+        # ПРОВЕРКА В БД
+        main.show()
+        self.close()
+    
+
+class Main(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('windows/main.ui', self)
+        self.btn_start.setIcon(QIcon('img/start.png'))
+        self.btn_start.clicked.connect(self.start)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     registration = RegistrationWindow()
+    main = Main()
     registration.show()
     sys.exit(app.exec())
