@@ -7,6 +7,7 @@ class Main(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('windows/main.ui', self)
+        # добавление настроек
         self.paused = True
         self.btn_start.setIcon(QIcon('img/start.png'))
         self.btn_next.setIcon(QIcon('img/next.png'))
